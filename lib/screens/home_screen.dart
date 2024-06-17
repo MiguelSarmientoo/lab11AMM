@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => MaterialControlsScreen()),
                 );
               },
-              child: Text('Mostrar Material Controls'),
+              child: Text('Mostrar Material Controls Ej 2'),
             ),
             SizedBox(height: 20),
             CupertinoButton(
@@ -31,12 +31,79 @@ class HomeScreen extends StatelessWidget {
                   CupertinoPageRoute(builder: (context) => CupertinoControlsScreen()),
                 );
               },
-              child: Text('Mostrar Cupertino Controls'),
+              child: Text('Mostrar Cupertino Controls Ej 2'),
+              color: CupertinoColors.activeBlue,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _showMaterialAlert(context);
+              },
+              child: Text('Mostrar Material Alert Ej 1'),
+            ),
+            SizedBox(height: 20),
+            CupertinoButton(
+              onPressed: () {
+                _showCupertinoAlert(context);
+              },
+              child: Text('Mostrar Cupertino Alert Ej 1'),
               color: CupertinoColors.activeBlue,
             ),
           ],
         ),
       ),
+    );
+  }
+
+  void _showMaterialAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Material Alert Title'),
+          content: Text('This is a Material Alert message'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showCupertinoAlert(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Text('Cupertino Alert Title'),
+          content: Text('This is a Cupertino Alert message'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+            CupertinoDialogAction(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
